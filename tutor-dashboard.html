@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Dashboard - EduTutor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduTutor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tutors.html" class="nav-link">Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="modules.html" class="nav-link">Modules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="chat.html" class="nav-link">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tutor-dashboard.html" class="nav-link active">Dashboard</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-grid">
+                <!-- Main Content -->
+                <div class="dashboard-main">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                        <h1 style="font-size: 2rem; font-weight: 700; color: #1e293b;">Welcome back, John!</h1>
+                        <div style="display: flex; gap: 1rem;">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Create Module
+                            </button>
+                            <button class="btn btn-secondary" style="background: #2563eb; color: white;">
+                                <i class="fas fa-upload"></i> Upload Resource
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Overview -->
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #2563eb; margin-bottom: 0.5rem;">12</div>
+                            <div style="color: #64748b;">Active Students</div>
+                        </div>
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #10b981; margin-bottom: 0.5rem;">45</div>
+                            <div style="color: #64748b;">Sessions This Month</div>
+                        </div>
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #f59e0b; margin-bottom: 0.5rem;">4.8</div>
+                            <div style="color: #64748b;">Average Rating</div>
+                        </div>
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; text-align: center;">
+                            <div style="font-size: 2rem; font-weight: 700; color: #8b5cf6; margin-bottom: 0.5rem;">$2,340</div>
+                            <div style="color: #64748b;">Earnings This Month</div>
+                        </div>
+                    </div>
+
+                    <!-- Today's Sessions -->
+                    <div style="margin-bottom: 2rem;">
+                        <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem;">Today's Sessions</h2>
+                        
+                        <div class="session-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="session-time">10:00 AM - 11:00 AM</div>
+                                    <div class="session-student">Student: Sarah Johnson</div>
+                                    <div style="color: #64748b; font-size: 0.9rem;">Subject: JavaScript Fundamentals</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="join-meeting">Join Meeting</button>
+                                    <button style="background: #6b7280; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="session-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="session-time">2:00 PM - 3:30 PM</div>
+                                    <div class="session-student">Student: Mike Chen</div>
+                                    <div style="color: #64748b; font-size: 0.9rem;">Subject: React.js Development</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="join-meeting">Join Meeting</button>
+                                    <button style="background: #6b7280; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="session-item">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <div class="session-time">4:00 PM - 5:00 PM</div>
+                                    <div class="session-student">Student: Emma Davis</div>
+                                    <div style="color: #64748b; font-size: 0.9rem;">Subject: Python Programming</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="join-meeting">Join Meeting</button>
+                                    <button style="background: #6b7280; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;">Reschedule</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Student Feedback -->
+                    <div>
+                        <h2 style="font-size: 1.5rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem;">Recent Student Feedback</h2>
+                        
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">Sarah Johnson</div>
+                                    <div style="color: #64748b; font-size: 0.9rem;">JavaScript Fundamentals</div>
+                                </div>
+                                <div style="color: #f59e0b;">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p style="color: #64748b; line-height: 1.6;">"John is an excellent tutor! He explained JavaScript closures in a way that finally made sense to me. Very patient and knowledgeable."</p>
+                        </div>
+
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">Mike Chen</div>
+                                    <div style="color: #64748b; font-size: 0.9rem;">React.js Development</div>
+                                </div>
+                                <div style="color: #f59e0b;">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <p style="color: #64748b; line-height: 1.6;">"Great session on React hooks! John provided practical examples that helped me understand the concepts much better."</p>
+                        </div>
+
+                        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 12px;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                                <div>
+                                    <div style="font-weight: 600; color: #1e293b; margin-bottom: 0.25rem;">Emma Davis</div>
+                                    <div style="color: #64748b; font-size: 0.9rem;">Python Programming</div>
+                                </div>
+                                <div style="color: #f59e0b;">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                            <p style="color: #64748b; line-height: 1.6;">"Very helpful session on Python data structures. John's explanations are clear and he's always willing to answer questions."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="dashboard-sidebar">
+                    <!-- Calendar -->
+                    <div class="calendar">
+                        <div class="calendar-header">
+                            <h3 style="font-size: 1.2rem; font-weight: 600; color: #1e293b;">December 2024</h3>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e5e7eb; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                    <i class="fas fa-chevron-left" style="color: #64748b; font-size: 0.8rem;"></i>
+                                </button>
+                                <button style="width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e5e7eb; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+                                    <i class="fas fa-chevron-right" style="color: #64748b; font-size: 0.8rem;"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; margin-bottom: 1rem;">
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Sun</div>
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Mon</div>
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Tue</div>
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Wed</div>
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Thu</div>
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Fri</div>
+                            <div style="text-align: center; padding: 0.5rem; font-size: 0.8rem; color: #64748b; font-weight: 600;">Sat</div>
+                        </div>
+                        
+                        <div class="calendar-grid">
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day">10</div>
+                            <div class="calendar-day">11</div>
+                            <div class="calendar-day">12</div>
+                            <div class="calendar-day">13</div>
+                            <div class="calendar-day">14</div>
+                            <div class="calendar-day">15</div>
+                            <div class="calendar-day has-session">16</div>
+                            <div class="calendar-day">17</div>
+                            <div class="calendar-day">18</div>
+                            <div class="calendar-day">19</div>
+                            <div class="calendar-day">20</div>
+                            <div class="calendar-day">21</div>
+                            <div class="calendar-day">22</div>
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day">24</div>
+                            <div class="calendar-day">25</div>
+                            <div class="calendar-day">26</div>
+                            <div class="calendar-day">27</div>
+                            <div class="calendar-day">28</div>
+                            <div class="calendar-day">29</div>
+                            <div class="calendar-day">30</div>
+                            <div class="calendar-day">31</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div style="margin-bottom: 2rem;">
+                        <h4 style="font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem;">Quick Actions</h4>
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <button class="btn" style="background: #f1f5f9; color: #64748b; border: none; padding: 0.75rem; border-radius: 6px; cursor: pointer; text-align: left;">
+                                <i class="fas fa-calendar-plus"></i> Schedule Session
+                            </button>
+                            <button class="btn" style="background: #f1f5f9; color: #64748b; border: none; padding: 0.75rem; border-radius: 6px; cursor: pointer; text-align: left;">
+                                <i class="fas fa-file-upload"></i> Upload Material
+                            </button>
+                            <button class="btn" style="background: #f1f5f9; color: #64748b; border: none; padding: 0.75rem; border-radius: 6px; cursor: pointer; text-align: left;">
+                                <i class="fas fa-chart-line"></i> View Analytics
+                            </button>
+                            <button class="btn" style="background: #f1f5f9; color: #64748b; border: none; padding: 0.75rem; border-radius: 6px; cursor: pointer; text-align: left;">
+                                <i class="fas fa-cog"></i> Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div>
+                        <h4 style="font-size: 1rem; font-weight: 600; color: #1e293b; margin-bottom: 1rem;">Recent Activity</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                                <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%; margin-top: 0.5rem;"></div>
+                                <div>
+                                    <div style="font-size: 0.9rem; color: #1e293b; margin-bottom: 0.25rem;">Session completed with Sarah</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">2 hours ago</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                                <div style="width: 8px; height: 8px; background: #2563eb; border-radius: 50%; margin-top: 0.5rem;"></div>
+                                <div>
+                                    <div style="font-size: 0.9rem; color: #1e293b; margin-bottom: 0.25rem;">New student registration</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">4 hours ago</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 0.75rem; align-items: flex-start;">
+                                <div style="width: 8px; height: 8px; background: #f59e0b; border-radius: 50%; margin-top: 0.5rem;"></div>
+                                <div>
+                                    <div style="font-size: 0.9rem; color: #1e293b; margin-bottom: 0.25rem;">New review received</div>
+                                    <div style="font-size: 0.8rem; color: #64748b;">1 day ago</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EduTutor</h3>
+                    <p>Connecting students with qualified tutors for better learning outcomes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="tutors.html">Find Tutors</a></li>
+                        <li><a href="modules.html">Modules</a></li>
+                        <li><a href="chat.html">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduTutor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

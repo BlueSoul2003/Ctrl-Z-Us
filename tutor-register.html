@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutor Registration - EduTutor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduTutor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tutors.html" class="nav-link">Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="modules.html" class="nav-link">Modules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="chat.html" class="nav-link">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a href="signin.html" class="nav-link">Sign In</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tutor Registration Form -->
+    <div class="form-container">
+        <h1 class="form-title">Become a Tutor</h1>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Share your knowledge and help students succeed</p>
+        
+        <form id="tutorRegisterForm">
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" required placeholder="Enter your full name">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" required placeholder="Enter your email address">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-input" required placeholder="Enter your phone number">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" required placeholder="Create a password (min. 6 characters)">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Confirm Password</label>
+                <input type="password" class="form-input" required placeholder="Confirm your password">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Subjects You Teach</label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="computer-programming" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Computer Programming</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="accounting" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Accounting</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="business-studies" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Business Studies</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="mathematics" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Mathematics</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="science" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Science</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="languages" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Languages</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="arts-design" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Arts & Design</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="teach-subjects" value="history" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">History</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Self Introduction</label>
+                <textarea class="form-textarea" required placeholder="Tell us about your teaching experience, qualifications, and what makes you a great tutor. This will be visible to students."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Hourly Rate ($)</label>
+                <input type="number" class="form-input" required placeholder="Enter your hourly rate" min="10" max="200">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Education & Certifications</label>
+                <textarea class="form-textarea" placeholder="List your educational background, degrees, certifications, and relevant qualifications"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Teaching Experience</label>
+                <textarea class="form-textarea" placeholder="Describe your teaching experience, including years of experience and any notable achievements"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Availability</label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0.5rem; margin-top: 0.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="availability" value="weekdays" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Weekdays</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="availability" value="weekends" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Weekends</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="availability" value="evenings" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Evenings</span>
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; padding: 0.5rem; border: 1px solid #e5e7eb; border-radius: 6px; transition: all 0.3s ease;">
+                        <input type="checkbox" name="availability" value="flexible" style="width: 16px; height: 16px;">
+                        <span style="font-size: 0.9rem;">Flexible</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <input type="checkbox" required style="width: 16px; height: 16px;">
+                <span style="font-size: 0.9rem; color: #64748b;">
+                    I agree to the <a href="#" style="color: #2563eb; text-decoration: none;">Terms of Service</a> and <a href="#" style="color: #2563eb; text-decoration: none;">Privacy Policy</a>
+                </span>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem;">
+                <input type="checkbox" required style="width: 16px; height: 16px;">
+                <span style="font-size: 0.9rem; color: #64748b;">
+                    I confirm that all information provided is accurate and I am qualified to teach the subjects listed
+                </span>
+            </div>
+            
+            <button type="submit" class="form-button">Submit Application</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+            <p style="color: #64748b; margin-bottom: 1rem;">Already have an account?</p>
+            <a href="signin.html" class="btn btn-secondary" style="display: inline-block; padding: 12px 24px; background: #2563eb; color: white; text-decoration: none; border-radius: 8px; font-weight: 600;">Sign In</a>
+        </div>
+        
+        <div style="background: #f8fafc; padding: 1.5rem; border-radius: 8px; margin-top: 2rem;">
+            <h4 style="color: #1e293b; margin-bottom: 1rem; font-size: 1.1rem;">What happens next?</h4>
+            <ul style="color: #64748b; line-height: 1.6; padding-left: 1.5rem;">
+                <li>We'll review your application within 2-3 business days</li>
+                <li>You may be asked to provide additional documentation</li>
+                <li>Upon approval, you'll receive access to your tutor dashboard</li>
+                <li>You can start accepting students and building your schedule</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EduTutor</h3>
+                    <p>Connecting students with qualified tutors for better learning outcomes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="tutors.html">Find Tutors</a></li>
+                        <li><a href="modules.html">Modules</a></li>
+                        <li><a href="chat.html">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduTutor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

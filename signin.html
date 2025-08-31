@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - EduTutor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>EduTutor</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="tutors.html" class="nav-link">Tutors</a>
+                </li>
+                <li class="nav-item">
+                    <a href="modules.html" class="nav-link">Modules</a>
+                </li>
+                <li class="nav-item">
+                    <a href="chat.html" class="nav-link">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a href="signin.html" class="nav-link active">Sign In</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sign In Form -->
+    <div class="form-container">
+        <h1 class="form-title">Welcome Back</h1>
+        <p style="text-align: center; color: #64748b; margin-bottom: 2rem;">Sign in to continue your learning journey</p>
+        
+        <form id="signInForm">
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" required placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-input" required placeholder="Enter your password">
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                    <input type="checkbox" style="width: 16px; height: 16px;">
+                    <span style="font-size: 0.9rem; color: #64748b;">Remember me</span>
+                </label>
+                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 0.9rem;">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="form-button">Sign In</button>
+        </form>
+        
+        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #e5e7eb;">
+            <p style="color: #64748b; margin-bottom: 1rem;">Don't have an account?</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="student-signup.html" class="btn btn-primary" style="flex: 1; min-width: 150px;">Sign Up as Student</a>
+                <a href="tutor-register.html" class="btn btn-secondary" style="flex: 1; min-width: 150px;">Register as Tutor</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: #64748b; margin-bottom: 1rem;">Or sign in with</p>
+            <div style="display: flex; gap: 1rem; justify-content: center;">
+                <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #e5e7eb; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="fab fa-google" style="color: #ea4335; font-size: 1.2rem;"></i>
+                </button>
+                <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #e5e7eb; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="fab fa-facebook" style="color: #1877f2; font-size: 1.2rem;"></i>
+                </button>
+                <button style="width: 50px; height: 50px; border-radius: 50%; border: 2px solid #e5e7eb; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease;">
+                    <i class="fab fa-apple" style="color: #000; font-size: 1.2rem;"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>EduTutor</h3>
+                    <p>Connecting students with qualified tutors for better learning outcomes.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="tutors.html">Find Tutors</a></li>
+                        <li><a href="modules.html">Modules</a></li>
+                        <li><a href="chat.html">Chat</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 EduTutor. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
