@@ -13,7 +13,16 @@ export default function TutorSessions({ user }) {
   const [selectedStudentId, setSelectedStudentId] = useState(null);
   const [newDate, setNewDate] = useState('');
   const [newTime, setNewTime] = useState('');
-  
+
+  // Manage Availability state
+  const [availabilityDate, setAvailabilityDate] = useState('');
+  const [availabilityTime, setAvailabilityTime] = useState('');
+  const [availabilityType, setAvailabilityType] = useState('Online'); // Online or Physical
+  const [availabilityLocation, setAvailabilityLocation] = useState('');
+  const [availabilityList, setAvailabilityList] = useState([]);
+  const [availabilityEndTime, setAvailabilityEndTime] = useState('');
+
+
   const tutorSessionsList = sessions.filter(s => s.tutorId === user.id);
   const filteredSessions = tutorSessionsList.filter(session => (filter === 'all' ? true : session.status === filter));
 
@@ -49,16 +58,18 @@ export default function TutorSessions({ user }) {
 
   const handleReschedule = () => {
     if (selectedSession && newDate && newTime) {
-      // In a real app, this would update the session in the database
       alert(`Session rescheduled to ${newDate} at ${newTime}`);
       setShowRescheduleModal(false);
       setSelectedSession(null);
     }
   };
 
-
   const joinMeeting = (session) => {
-    window.open(`/meeting/${session.meetingRoomId}`, '_blank');
+    if (session.meetingRoomId) {
+      window.open(`/meeting/${session.meetingRoomId}`, '_blank');
+    } else {
+      alert('No meeting link available for this session.');
+    }
   };
 
   const totalEarnings = tutorSessionsList
@@ -68,28 +79,48 @@ export default function TutorSessions({ user }) {
   const upcomingCount = tutorSessionsList.filter(s => s.status === 'upcoming').length;
   const completedCount = tutorSessionsList.filter(s => s.status === 'completed').length;
 
+  // Manage Availability handlers
+  const handleAddAvailability = () => {
+    if (!availabilityDate || !availabilityTime || (availabilityType === 'Physical' && !availabilityLocation)) {
+      alert('Please fill in all required fields.');
+      return;
+    }
+    const locationText = availabilityType === 'Online' ? 'Online (link will be generated)' : availabilityLocation;
+    setAvailabilityList(prev => [...prev, {
+      date: availabilityDate,
+      startTime: availabilityTime,
+      endTime: availabilityEndTime,
+      type: availabilityType,
+      location: locationText,
+    }]);
+    setAvailabilityDate('');
+    setAvailabilityTime('');
+    setAvailabilityType('Online');
+    setAvailabilityLocation('');
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div className="space-y-8">
+        <div className="space-y-8">
           {/* Header */}
           <div className="flex items-center justify-between">
-        <div>
+            <div>
               <h1 className="text-3xl font-bold text-gray-900">Manage Sessions</h1>
               <p className="text-gray-600 mt-2">View and manage your tutoring sessions</p>
-        </div>
+            </div>
             <div className="flex items-center gap-4">
-          <span className="text-sm text-gray-600">Filter:</span>
+              <span className="text-sm text-gray-600">Filter:</span>
               <select 
                 value={filter} 
                 onChange={(e) => setFilter(e.target.value)} 
                 className="rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
-            <option value="all">All Sessions</option>
-            <option value="upcoming">Upcoming</option>
-            <option value="completed">Completed</option>
-          </select>
-        </div>
+                <option value="all">All Sessions</option>
+                <option value="upcoming">Upcoming</option>
+                <option value="completed">Completed</option>
+              </select>
+            </div>
           </div>
 
           {/* Stats Cards */}
@@ -107,51 +138,51 @@ export default function TutorSessions({ user }) {
             </div>
 
             <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <div className="flex items-center">
+              <div className="flex items-center">
                 <div className="h-12 w-12 rounded-xl bg-green-100 flex items-center justify-center">
                   <span className="text-green-600 font-semibold text-xl">✓</span>
                 </div>
-            <div className="ml-4">
+                <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Completed</p>
                   <p className="text-3xl font-bold text-gray-900">{completedCount}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
             <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <div className="flex items-center">
+              <div className="flex items-center">
                 <div className="h-12 w-12 rounded-xl bg-yellow-100 flex items-center justify-center">
                   <span className="text-yellow-600 font-semibold text-xl">$</span>
                 </div>
-            <div className="ml-4">
+                <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Total Earnings</p>
                   <p className="text-3xl font-bold text-gray-900">RM {totalEarnings}</p>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
 
             <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
-          <div className="flex items-center">
+              <div className="flex items-center">
                 <div className="h-12 w-12 rounded-xl bg-purple-100 flex items-center justify-center">
                   <span className="text-purple-600 font-semibold text-xl">★</span>
                 </div>
-            <div className="ml-4">
+                <div className="ml-4">
                   <p className="text-sm font-medium text-gray-600">Avg Rating</p>
                   <p className="text-3xl font-bold text-gray-900">{tutor.rating}</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
 
           {/* Sessions List */}
           <div className="bg-white rounded-2xl border border-gray-200 shadow-sm">
-        <div className="px-6 py-4 border-b border-gray-200">
-          <h2 className="text-lg font-semibold text-gray-900">Sessions</h2>
-        </div>
-            
-        {filteredSessions.length ? (
-          <div className="divide-y divide-gray-200">
-            {filteredSessions.map((session) => (
+            <div className="px-6 py-4 border-b border-gray-200">
+              <h2 className="text-lg font-semibold text-gray-900">Sessions</h2>
+            </div>
+
+            {filteredSessions.length ? (
+              <div className="divide-y divide-gray-200">
+                {filteredSessions.map((session) => (
                   <div key={session.id} className="p-6 hover:bg-gray-50 transition-colors">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
@@ -167,7 +198,7 @@ export default function TutorSessions({ user }) {
                                 {session.status === 'upcoming' ? 'Upcoming' : 'Completed'}
                               </span>
                             </div>
-                            
+
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                               <div className="space-y-2">
                                 <p className="text-sm text-gray-600">
@@ -189,7 +220,7 @@ export default function TutorSessions({ user }) {
                                   <span className="font-medium">Duration:</span> {session.duration} minutes
                                 </p>
                               </div>
-                              
+
                               <div className="space-y-2">
                                 <p className="text-sm text-gray-600">
                                   <span className="font-medium">Price:</span> RM {session.price}
@@ -240,7 +271,7 @@ export default function TutorSessions({ user }) {
                             )}
                           </div>
                         </div>
-                  </div>
+                      </div>
 
                       <div className="flex flex-col gap-2 ml-4">
                         {session.status === 'upcoming' && (
@@ -306,20 +337,20 @@ export default function TutorSessions({ user }) {
                           View Details
                         </button>
 
-                    {session.status === 'upcoming' && (
+                        {session.status === 'upcoming' && (
                           <button
                             onClick={() => handleUpdateStatus(session.id, 'completed')}
                             className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors"
                           >
                             Mark Complete
                           </button>
-                    )}
+                        )}
+                      </div>
+                    </div>
                   </div>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-        ) : (
+            ) : (
               <div className="text-center py-12">
                 <p className="text-gray-500 text-lg">
                   {filter === 'all' ? 'No sessions found.' : `No ${filter} sessions found.`}
@@ -330,113 +361,95 @@ export default function TutorSessions({ user }) {
               </div>
             )}
           </div>
+
+          {/* Manage Availability */}
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-sm mt-8 p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">Manage Availability</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+              <input
+                type="date"
+                value={availabilityDate}
+                onChange={(e) => setAvailabilityDate(e.target.value)}
+                className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="time"
+                value={availabilityTime}
+                onChange={(e) => setAvailabilityTime(e.target.value)}
+                className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="time"
+                value={availabilityEndTime}
+                onChange={(e) => setAvailabilityEndTime(e.target.value)}
+                className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <select
+                value={availabilityType}
+                onChange={(e) => setAvailabilityType(e.target.value)}
+                className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="Online">Online</option>
+                <option value="Physical">Physical</option>
+              </select>
+              {availabilityType === 'Physical' && (
+                <input
+                  type="text"
+                  placeholder="Location"
+                  value={availabilityLocation}
+                  onChange={(e) => setAvailabilityLocation(e.target.value)}
+                  className="border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              )}
+            </div>
+
+            <button
+              onClick={handleAddAvailability}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg text-sm font-semibold"
+            >
+              Add Availability
+            </button>
+
+            {availabilityList.length > 0 && (
+              <div className="mt-6">
+                <h3 className="text-lg font-medium text-gray-900 mb-2">Your Available Slots</h3>
+                <ul className="divide-y divide-gray-200">
+                  {availabilityList.map((slot, index) => (
+                    <li key={index} className="py-2 flex justify-between items-center">
+                      <span className="text-gray-700">{slot.date} at {slot.time} - {slot.location}</span>
+                      <button
+                        onClick={() => setAvailabilityList(prev => prev.filter((_, i) => i !== index))}
+                        className="text-red-500 hover:text-red-700 text-sm"
+                      >
+                        Remove
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+
         </div>
 
         {/* Session Details Modal */}
         {showDetailsModal && selectedSession && (
-          <div className="fixed inset-0 z-40 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black/30" onClick={() => setShowDetailsModal(false)} />
-            <div className="relative z-50 w-full max-w-2xl max-h-[90vh] rounded-2xl bg-white shadow-xl overflow-hidden">
-              <div className="flex flex-col h-full">
-                <div className="flex items-center justify-between p-6 border-b border-gray-200">
-                  <h2 className="text-xl font-bold text-gray-900">Session Details</h2>
-                  <button
-                    onClick={() => setShowDetailsModal(false)}
-                    className="text-gray-400 hover:text-gray-600 text-2xl"
-                  >
-                    ×
-                  </button>
-                </div>
-
-                <div className="flex-1 overflow-y-auto p-6">
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-3">Session Information</h3>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Topic</p>
-                          <p className="text-sm text-gray-900">{selectedSession.topic}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Subject</p>
-                          <p className="text-sm text-gray-900">{selectedSession.subject}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Student</p>
-                          <p className="text-sm text-gray-900">{selectedSession.studentName}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Duration</p>
-                          <p className="text-sm text-gray-900">{selectedSession.duration} minutes</p>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Date & Time</p>
-                          <p className="text-sm text-gray-900">{selectedSession.date} at {selectedSession.time}</p>
-                        </div>
-                        <div>
-                          <p className="text-sm font-medium text-gray-600">Price</p>
-                          <p className="text-sm text-gray-900">RM {selectedSession.price}</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {selectedSession.preparationMaterials && (
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">Preparation Materials</h3>
-                        <ul className="space-y-2">
-                          {selectedSession.preparationMaterials.map((material, index) => (
-                            <li key={index} className="flex items-center text-sm text-gray-600">
-                              <span className="mr-2">📄</span>
-                              {material}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    {selectedSession.sessionNotes && (
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">Session Notes</h3>
-                        <p className="text-sm text-gray-700 bg-gray-50 rounded-lg p-3">{selectedSession.sessionNotes}</p>
-                      </div>
-                    )}
-
-                    {selectedSession.status === 'completed' && selectedSession.sessionSummary && (
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">Session Summary</h3>
-                        <p className="text-sm text-gray-700 bg-green-50 rounded-lg p-3">{selectedSession.sessionSummary}</p>
-                      </div>
-                    )}
-
-                    {selectedSession.status === 'completed' && selectedSession.feedback && (
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">Student Feedback</h3>
-                        <div className="bg-blue-50 rounded-lg p-3">
-                          <div className="flex items-center gap-2 mb-2">
-                            <div className="flex">
-                              {[...Array(5)].map((_, i) => (
-                                <span key={i} className={`text-sm ${i < selectedSession.rating ? 'text-yellow-400' : 'text-gray-300'}`}>
-                                  ⭐
-                                </span>
-                              ))}
-                            </div>
-                            <span className="text-sm text-gray-600">({selectedSession.rating}/5)</span>
-                          </div>
-                          <p className="text-sm text-gray-700 italic">"{selectedSession.feedback}"</p>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-end gap-3 p-6 border-t border-gray-200 bg-gray-50">
-                  <button
-                    onClick={() => setShowDetailsModal(false)}
-                    className="px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 rounded-lg hover:bg-gray-50"
-                  >
-                    Close
-                  </button>
-                </div>
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full p-6">
+              <h3 className="text-xl font-semibold mb-4">Session Details</h3>
+              <p><span className="font-medium">Topic:</span> {selectedSession.topic}</p>
+              <p><span className="font-medium">Subject:</span> {selectedSession.subject}</p>
+              <p><span className="font-medium">Date & Time:</span> {selectedSession.date} at {selectedSession.time}</p>
+              <p><span className="font-medium">Student:</span> {selectedSession.studentName}</p>
+              <p><span className="font-medium">Location:</span> {selectedSession.meetingRoomId || 'N/A'}</p>
+              <div className="mt-6 flex justify-end gap-3">
+                <button
+                  onClick={() => setShowDetailsModal(false)}
+                  className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg"
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
@@ -444,45 +457,33 @@ export default function TutorSessions({ user }) {
 
         {/* Reschedule Modal */}
         {showRescheduleModal && selectedSession && (
-          <div className="fixed inset-0 z-40 flex items-center justify-center">
-            <div className="absolute inset-0 bg-black/30" onClick={() => setShowRescheduleModal(false)} />
-            <div className="relative z-50 w-full max-w-md rounded-2xl bg-white shadow-xl p-6">
-              <h2 className="text-xl font-bold text-gray-900 mb-4">Reschedule Session</h2>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">New Date</label>
-                  <input
-                    type="date"
-                    value={newDate}
-                    onChange={(e) => setNewDate(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">New Time</label>
-                  <input
-                    type="time"
-                    value={newTime}
-                    onChange={(e) => setNewTime(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-              </div>
-
-              <div className="flex items-center justify-end gap-3 mt-6">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-white rounded-2xl shadow-xl max-w-md w-full p-6">
+              <h3 className="text-xl font-semibold mb-4">Reschedule Session</h3>
+              <input
+                type="date"
+                value={newDate}
+                onChange={(e) => setNewDate(e.target.value)}
+                className="border rounded-lg px-3 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <input
+                type="time"
+                value={newTime}
+                onChange={(e) => setNewTime(e.target.value)}
+                className="border rounded-lg px-3 py-2 w-full mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <div className="flex justify-end gap-3 mt-4">
                 <button
                   onClick={() => setShowRescheduleModal(false)}
-                  className="px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 rounded-lg hover:bg-gray-50"
+                  className="px-4 py-2 bg-gray-300 hover:bg-gray-400 rounded-lg"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleReschedule}
-                  className="px-6 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg"
                 >
-                  Reschedule
+                  Save
                 </button>
               </div>
             </div>
@@ -490,14 +491,13 @@ export default function TutorSessions({ user }) {
         )}
 
         {/* Student Profile Modal */}
-        <StudentProfileModal
-          studentId={selectedStudentId}
-          open={showStudentProfile}
-          onClose={() => {
-            setShowStudentProfile(false);
-            setSelectedStudentId(null);
-          }}
-        />
+        {showStudentProfile && selectedStudentId && (
+          <StudentProfileModal
+            studentId={selectedStudentId}
+            onClose={() => setShowStudentProfile(false)}
+          />
+        )}
+
       </div>
     </div>
   );
