@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 export default function Header({ user, onLogout, onOpenProfile }) {
+  
   const navLinkClass = ({ isActive }) =>
     `px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 ${
       isActive ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-blue-50'
@@ -38,9 +39,6 @@ export default function Header({ user, onLogout, onOpenProfile }) {
         return (
           <>
             <NavLink to="/tutor" className={navLinkClass}>
-              Dashboard
-            </NavLink>
-            <NavLink to="/tutor/sessions" className={navLinkClass}>
               Sessions
             </NavLink>
             <NavLink to="/tutor/messages" className={navLinkClass}>
@@ -51,14 +49,17 @@ export default function Header({ user, onLogout, onOpenProfile }) {
       case 'admin':
         return (
           <>
-            <NavLink to="/admin" className={navLinkClass}>
-              Dashboard
-            </NavLink>
-            <NavLink to="/admin/tutors" className={navLinkClass}>
-              Manage Tutors
-            </NavLink>
             <NavLink to="/admin/users" className={navLinkClass}>
-              Manage Users
+              Users
+            </NavLink>
+            <NavLink to="/admin/discussions" className={navLinkClass}>
+              Discussions
+            </NavLink>
+            <NavLink to="/admin/sessions" className={navLinkClass}>
+              Sessions
+            </NavLink>
+            <NavLink to="/admin/settings" className={navLinkClass}>
+              Settings
             </NavLink>
           </>
         );

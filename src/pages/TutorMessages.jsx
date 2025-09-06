@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { messages, users, addMessage } from '../mockData.js';
+import StudentProfileModal from '../components/StudentProfileModal.jsx';
 
 export default function TutorMessages({ user }) {
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [newMessage, setNewMessage] = useState('');
+  const [showStudentProfile, setShowStudentProfile] = useState(false);
+  const [selectedStudentId, setSelectedStudentId] = useState(null);
 
   // Get unique students who have messaged this tutor
   const students = useMemo(() => {
@@ -43,6 +46,12 @@ export default function TutorMessages({ user }) {
     return new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
+  const openStudentProfile = (studentId, e) => {
+    e.stopPropagation(); // Prevent triggering the student selection
+    setSelectedStudentId(studentId);
+    setShowStudentProfile(true);
+  };
+
   return (
     <div className="space-y-8">
       <header>
@@ -75,11 +84,17 @@ export default function TutorMessages({ user }) {
                     }`}
                   >
                     <div className="flex items-center space-x-3">
-                      <img
-                        src={student.avatarUrl}
-                        alt={`${student.name} avatar`}
-                        className="h-10 w-10 rounded-full ring-1 ring-gray-300"
-                      />
+                      <button
+                        onClick={(e) => openStudentProfile(student.id, e)}
+                        className="hover:opacity-80 transition-opacity"
+                        title="View student profile"
+                      >
+                        <img
+                          src={student.avatarUrl}
+                          alt={`${student.name} avatar`}
+                          className="h-10 w-10 rounded-full ring-1 ring-gray-300 hover:ring-2 hover:ring-blue-500"
+                        />
+                      </button>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
                           {student.name}
@@ -172,6 +187,16 @@ export default function TutorMessages({ user }) {
           )}
         </div>
       </div>
+
+      {/* Student Profile Modal */}
+      <StudentProfileModal
+        studentId={selectedStudentId}
+        open={showStudentProfile}
+        onClose={() => {
+          setShowStudentProfile(false);
+          setSelectedStudentId(null);
+        }}
+      />
     </div>
   );
 }

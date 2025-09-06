@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { feedPet } from '../mockData.js';
 import FloatingAiChatbot from '../components/FloatingAiChatbot.jsx';
 
@@ -6,11 +6,33 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
   const [message, setMessage] = useState('');
   const feedCost = 20;
 
+  // 检查是否超过一天没喂食
+  useEffect(() => {
+    if (!pet.lastFedAt) return;
+    const now = Date.now();
+    const oneDay = 24 * 60 * 60 * 1000;
+
+    if (now - pet.lastFedAt >= oneDay) {
+      const newHappiness = Math.max(0, Math.floor(pet.happiness * 0.5));
+      onUpdatePet({ ...pet, happiness: newHappiness, lastFedAt: now });
+      setMessage(`Your pet wasn't fed for a day! Happiness dropped to ${newHappiness}`);
+      setTimeout(() => setMessage(''), 5000);
+    }
+  }, [pet, onUpdatePet]);
+
+  // 喂食函数
   const handleFeed = () => {
     if (user.points >= feedCost) {
       const cost = feedPet();
+      const now = Date.now();
       onUpdatePoints(user.points - cost);
-      onUpdatePet({ ...pet, happiness: Math.min(100, pet.happiness + 15), level: pet.level + 1 });
+      onUpdatePet({
+        ...pet,
+        happiness: Math.min(100, pet.happiness + 15),
+        level: pet.level + 1,
+        totalFed: (pet.totalFed || 0) + 1,
+        lastFedAt: now, // ⭐ 更新喂食时间
+      });
       setMessage(`Fed ${pet.name}! Happiness +15, Level +1`);
       setTimeout(() => setMessage(''), 3000);
     } else {
@@ -41,9 +63,13 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
       </header>
 
       {message && (
-        <div className={`${
-          message.includes('Not enough') ? 'bg-red-50 text-red-700' : 'bg-green-50 text-green-700'
-        } rounded-md p-4`}>
+        <div
+          className={`${
+            message.includes('Not enough')
+              ? 'bg-red-50 text-red-700'
+              : 'bg-green-50 text-green-700'
+          } rounded-md p-4`}
+        >
           {message}
         </div>
       )}
@@ -69,8 +95,8 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
                   <span>{pet.happiness}%</span>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-3">
-                  <div 
-                    className="bg-green-500 h-3 rounded-full transition-all duration-300" 
+                  <div
+                    className="bg-green-500 h-3 rounded-full transition-all duration-300"
                     style={{ width: `${pet.happiness}%` }}
                   ></div>
                 </div>
@@ -79,12 +105,16 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div className="bg-gray-50 rounded-lg p-3">
                   <p className="text-gray-600">Total Fed</p>
-                  <p className="text-lg font-semibold text-gray-900">{pet.totalFed}</p>
+                  <p className="text-lg font-semibold text-gray-900">
+                    {pet.totalFed || 0}
+                  </p>
                 </div>
                 <div className="bg-gray-50 rounded-lg p-3">
                   <p className="text-gray-600">Last Fed</p>
                   <p className="text-lg font-semibold text-gray-900">
-                    {pet.lastFedAt ? new Date(pet.lastFedAt).toLocaleDateString() : 'Never'}
+                    {pet.lastFedAt
+                      ? new Date(pet.lastFedAt).toLocaleDateString()
+                      : 'Never'}
                   </p>
                 </div>
               </div>
@@ -96,7 +126,7 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
         <div className="space-y-6">
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Actions</h3>
-            
+
             <div className="space-y-4">
               <button
                 onClick={handleFeed}
@@ -124,7 +154,10 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
               <li>• Complete learning modules to earn points</li>
               <li>• Keep your pet happy by feeding regularly</li>
               <li>• Higher level pets are happier and more active</li>
-              <li>• Check back daily to maintain your pet's health</li>
+              <li>
+                • Check back daily to maintain your pet's health. If you don't
+                feed your pet for a day, its happiness will drop by 50%.
+              </li>
             </ul>
           </div>
         </div>
@@ -134,3 +167,4 @@ export default function StudentPetGame({ user, onUpdatePoints, pet, onUpdatePet 
     </div>
   );
 }
+

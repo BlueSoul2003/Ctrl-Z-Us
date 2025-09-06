@@ -29,6 +29,12 @@ export const users = [
     status: 'approved',
     joinedDate: '2024-01-10',
     totalSessions: 45,
+    verified: true,
+    responseTime: '2 hours',
+    languages: ['English', 'Mandarin'],
+    nextAvailable: 'Tomorrow 2PM',
+    latestReview: 'Excellent explanations! Made calculus so much clearer.',
+    experience: '5+ years',
     availability: [
       { id: 'slot_e1', date: '2025-09-07', start: '10:00', end: '11:00', booked: false },
       { id: 'slot_e2', date: '2025-09-08', start: '14:00', end: '15:00', booked: false },
@@ -52,6 +58,12 @@ export const users = [
     status: 'approved',
     joinedDate: '2024-01-12',
     totalSessions: 32,
+    verified: false,
+    responseTime: '4 hours',
+    languages: ['English'],
+    nextAvailable: 'Today 4PM',
+    latestReview: 'Great at explaining difficult physics concepts with real-world examples.',
+    experience: '3+ years',
     availability: [
       { id: 'slot_m1', date: '2025-09-07', start: '09:00', end: '10:00', booked: false },
       { id: 'slot_m2', date: '2025-09-09', start: '16:00', end: '17:00', booked: false },
@@ -95,43 +107,161 @@ export const users = [
 export const modules = [
   {
     id: 'mod_1',
-    title: 'Algebra Fundamentals',
+    title: 'Linear Algebra Fundamentals',
     subject: 'Mathematics',
     duration: '45 minutes',
     level: 'Beginner',
-    description: 'Learn the basics of algebraic expressions and equations.',
+    description: 'Master vector spaces, linear transformations, and matrix operations essential for university-level mathematics.',
     completed: true,
     progress: 100,
+    type: 'free',
+    price: 0,
+    pointsRequired: 0,
+    completedDate: '2024-01-20',
+    grade: 'A+',
   },
   {
     id: 'mod_2',
-    title: 'Physics - Mechanics',
+    title: 'Classical Mechanics',
     subject: 'Physics',
     duration: '60 minutes',
     level: 'Intermediate',
-    description: 'Understand forces, motion, and energy in mechanical systems.',
+    description: 'Comprehensive study of Newtonian mechanics, energy conservation, and rotational dynamics.',
     completed: false,
     progress: 30,
+    type: 'free',
+    price: 0,
+    pointsRequired: 0,
   },
   {
     id: 'mod_3',
-    title: 'Organic Chemistry Basics',
+    title: 'Organic Chemistry Synthesis',
     subject: 'Chemistry',
     duration: '50 minutes',
-    level: 'Beginner',
-    description: 'Introduction to organic compounds and their properties.',
+    level: 'Advanced',
+    description: 'Advanced organic synthesis techniques and reaction mechanisms for university chemistry students.',
     completed: false,
     progress: 0,
+    type: 'paid',
+    price: 25,
+    pointsRequired: 0,
   },
   {
     id: 'mod_4',
-    title: 'Calculus - Derivatives',
+    title: 'Multivariable Calculus',
     subject: 'Mathematics',
     duration: '55 minutes',
     level: 'Advanced',
-    description: 'Master the concept of derivatives and their applications.',
+    description: 'Partial derivatives, multiple integrals, and vector calculus for advanced mathematics courses.',
     completed: false,
     progress: 0,
+    type: 'paid',
+    price: 30,
+    pointsRequired: 0,
+  },
+  {
+    id: 'mod_5',
+    title: 'Data Structures & Algorithms',
+    subject: 'Computer Science',
+    duration: '75 minutes',
+    level: 'Intermediate',
+    description: 'Essential data structures and algorithmic thinking for computer science students.',
+    completed: false,
+    progress: 0,
+    type: 'redeemable',
+    price: 0,
+    pointsRequired: 150,
+  },
+  {
+    id: 'mod_6',
+    title: 'Microeconomics Theory',
+    subject: 'Economics',
+    duration: '65 minutes',
+    level: 'Intermediate',
+    description: 'Consumer behavior, market structures, and economic decision-making principles.',
+    completed: false,
+    progress: 0,
+    type: 'paid',
+    price: 20,
+    pointsRequired: 0,
+  },
+  {
+    id: 'mod_7',
+    title: 'Engineering Thermodynamics',
+    subject: 'Engineering',
+    duration: '80 minutes',
+    level: 'Advanced',
+    description: 'Heat transfer, energy systems, and thermodynamic cycles for engineering students.',
+    completed: false,
+    progress: 0,
+    type: 'redeemable',
+    price: 0,
+    pointsRequired: 200,
+  },
+  {
+    id: 'mod_8',
+    title: 'Cognitive Psychology',
+    subject: 'Psychology',
+    duration: '55 minutes',
+    level: 'Intermediate',
+    description: 'Memory, perception, and cognitive processes in human behavior and decision-making.',
+    completed: false,
+    progress: 0,
+    type: 'free',
+    price: 0,
+    pointsRequired: 0,
+  },
+  {
+    id: 'mod_9',
+    title: 'Quantum Mechanics',
+    subject: 'Physics',
+    duration: '90 minutes',
+    level: 'Advanced',
+    description: 'Wave-particle duality, Schrödinger equation, and quantum states for advanced physics.',
+    completed: false,
+    progress: 0,
+    type: 'paid',
+    price: 40,
+    pointsRequired: 0,
+  },
+  {
+    id: 'mod_10',
+    title: 'Machine Learning Fundamentals',
+    subject: 'Computer Science',
+    duration: '70 minutes',
+    level: 'Intermediate',
+    description: 'Introduction to supervised and unsupervised learning algorithms and applications.',
+    completed: false,
+    progress: 0,
+    type: 'redeemable',
+    price: 0,
+    pointsRequired: 180,
+  },
+  {
+    id: 'mod_11',
+    title: 'Financial Accounting',
+    subject: 'Business',
+    duration: '60 minutes',
+    level: 'Beginner',
+    description: 'Basic accounting principles, financial statements, and business analysis.',
+    completed: false,
+    progress: 0,
+    type: 'paid',
+    price: 15,
+    pointsRequired: 0,
+  },
+  {
+    id: 'mod_12',
+    title: 'Biochemistry Metabolism',
+    subject: 'Biology',
+    duration: '65 minutes',
+    level: 'Advanced',
+    description: 'Metabolic pathways, enzyme kinetics, and biochemical processes in living systems.',
+    completed: false,
+    progress: 0,
+    type: 'redeemable',
+    price: 0,
+    pointsRequired: 170,
   },
 ];
 
@@ -142,8 +272,16 @@ export const subjects = [
   'Chemistry',
   'Biology',
   'Computer Science',
+  'Economics',
+  'Engineering',
+  'Psychology',
+  'Business',
   'English',
   'History',
+  'Philosophy',
+  'Statistics',
+  'Medicine',
+  'Law',
 ];
 
 // Tutoring sessions
@@ -160,6 +298,17 @@ export const sessions = [
     topic: 'Calculus Review',
     studentName: 'Alice Chen',
     tutorName: 'Dr. Emily Zhang',
+    meetingRoomId: 'MATH-2024-001',
+    sessionNotes: 'Focus on derivatives and integration techniques',
+    price: 35,
+    earnings: 0, // Not earned yet
+    preparationMaterials: [
+      'Calculus textbook Chapter 3',
+      'Practice problems: Derivatives',
+      'Integration worksheet'
+    ],
+    studentContact: 'alice@student.com',
+    canReschedule: true,
   },
   {
     id: 'sess_2',
@@ -175,6 +324,19 @@ export const sessions = [
     tutorName: 'Marcus Lee',
     rating: 5,
     feedback: 'Great session! Very helpful explanations.',
+    sessionNotes: 'Covered Newton\'s laws and momentum conservation',
+    meetingRoomId: 'PHYS-2024-002',
+    price: 30,
+    earnings: 30,
+    preparationMaterials: [
+      'Physics textbook Chapter 4',
+      'Newton\'s laws worksheet',
+      'Momentum problems'
+    ],
+    studentContact: 'alice@student.com',
+    canReschedule: false,
+    sessionSummary: 'Successfully covered Newton\'s three laws and momentum conservation. Student showed good understanding of basic concepts.',
+    followUpNeeded: false,
   },
   {
     id: 'sess_3',
@@ -190,6 +352,19 @@ export const sessions = [
     tutorName: 'Dr. Emily Zhang',
     rating: 4,
     feedback: 'Good session, need more practice with quadratic equations.',
+    sessionNotes: 'Reviewed quadratic equations and factoring methods',
+    meetingRoomId: 'MATH-2024-003',
+    price: 35,
+    earnings: 35,
+    preparationMaterials: [
+      'Algebra textbook Chapter 2',
+      'Quadratic equations worksheet',
+      'Factoring practice problems'
+    ],
+    studentContact: 'alice@student.com',
+    canReschedule: false,
+    sessionSummary: 'Reviewed quadratic equations and factoring. Student needs more practice with complex factoring problems.',
+    followUpNeeded: true,
   },
 ];
 
@@ -270,7 +445,7 @@ export const userPreferences = {
   user_1: {
     preferredSubjects: ['Mathematics', 'Physics'],
     difficulty: 'Intermediate',
-    intro: '',
+    intro: 'Passionate about learning mathematics and physics. I enjoy problem-solving and want to improve my understanding of advanced concepts.',
   },
 };
 
@@ -281,9 +456,10 @@ export function updateUserProfile(userId, updates) {
   if (updates.email !== undefined) u.email = updates.email;
   if (updates.avatarUrl !== undefined) u.avatarUrl = updates.avatarUrl;
   if (u.role === 'student') {
-    userPreferences[userId] = userPreferences[userId] || { preferredSubjects: [], difficulty: 'Beginner' };
+    userPreferences[userId] = userPreferences[userId] || { preferredSubjects: [], difficulty: 'Beginner', intro: '' };
     if (updates.preferredSubjects) userPreferences[userId].preferredSubjects = updates.preferredSubjects;
     if (updates.intro !== undefined) userPreferences[userId].intro = updates.intro;
+    if (updates.studentIntro !== undefined) userPreferences[userId].intro = updates.studentIntro;
   }
   if (u.role === 'tutor') {
     if (updates.subjectsList) u.subjects = updates.subjectsList;
@@ -471,6 +647,124 @@ export function feedPet(cost = 20) {
   petData.totalFed += 1;
   return cost;
 }
+
+// Mock data for discussion groups and moderation
+export const discussionGroups = [
+  {
+    id: 'group_1',
+    name: 'Mathematics Study Group',
+    subject: 'Mathematics',
+    memberCount: 45,
+    createdAt: '2024-01-15',
+    isActive: true,
+  },
+  {
+    id: 'group_2',
+    name: 'Physics Discussion',
+    subject: 'Physics',
+    memberCount: 32,
+    createdAt: '2024-01-20',
+    isActive: true,
+  },
+  {
+    id: 'group_3',
+    name: 'Computer Science Help',
+    subject: 'Computer Science',
+    memberCount: 28,
+    createdAt: '2024-01-25',
+    isActive: true,
+  },
+];
+
+export const discussionMessages = [
+  {
+    id: 'msg_1',
+    groupId: 'group_1',
+    userId: 'user_1',
+    userName: 'Alice Chen',
+    userRole: 'student',
+    content: 'Can someone help me with calculus derivatives?',
+    timestamp: '2024-01-30T10:30:00Z',
+    isReported: false,
+    isDeleted: false,
+    reports: [],
+  },
+  {
+    id: 'msg_2',
+    groupId: 'group_1',
+    userId: 'user_2',
+    userName: 'Dr. Emily Zhang',
+    userRole: 'tutor',
+    content: 'Sure! I can help you with derivatives. What specific problem are you working on?',
+    timestamp: '2024-01-30T10:35:00Z',
+    isReported: false,
+    isDeleted: false,
+    reports: [],
+  },
+  {
+    id: 'msg_3',
+    groupId: 'group_2',
+    userId: 'user_4',
+    userName: 'John Doe',
+    userRole: 'student',
+    content: 'This is inappropriate content that should be moderated',
+    timestamp: '2024-01-30T11:00:00Z',
+    isReported: true,
+    isDeleted: false,
+    reports: [
+      {
+        id: 'report_1',
+        reportedBy: 'user_5',
+        reason: 'Inappropriate content',
+        timestamp: '2024-01-30T11:05:00Z',
+      }
+    ],
+  },
+  {
+    id: 'msg_4',
+    groupId: 'group_3',
+    userId: 'user_6',
+    userName: 'Sarah Wilson',
+    userRole: 'student',
+    content: 'Great explanation! This really helped me understand the concept.',
+    timestamp: '2024-01-30T12:00:00Z',
+    isReported: false,
+    isDeleted: false,
+    reports: [],
+  },
+];
+
+export const mutedUsers = [
+  {
+    id: 'user_7',
+    userName: 'ProblemUser',
+    mutedUntil: '2024-02-15T00:00:00Z',
+    reason: 'Spam messages',
+    mutedBy: 'admin',
+  },
+];
+
+// Mock platform settings
+export const platformSettings = {
+  commissionRate: 15, // percentage
+  subjects: [
+    'Mathematics',
+    'Physics',
+    'Computer Science',
+    'Chemistry',
+    'Biology',
+    'Economics',
+    'Engineering',
+    'Psychology',
+    'English',
+    'History',
+  ],
+  maxSessionDuration: 120, // minutes
+  minSessionDuration: 30, // minutes
+  platformName: 'Tutorly',
+  supportEmail: 'support@tutorly.com',
+  maintenanceMode: false,
+};
 
 export function completeModule(moduleId) {
   const module = modules.find(m => m.id === moduleId);
