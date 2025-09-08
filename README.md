@@ -51,19 +51,6 @@ Many university students face academic challenges such as difficulty understandi
 
 ## 🧩 React + Vite
 
-This project uses **React** with **Vite** for a fast development experience featuring HMR and opinionated ESLint rules.
-
-**Official React plugins for Vite:**
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) — uses **Babel** for Fast Refresh  
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) — uses **SWC** for Fast Refresh
-
-### ESLint & TypeScript Recommendation
-
-If you are developing a production application, enable **type-aware lint rules** with TypeScript. See the Vite **[React + TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts)** for details on integrating **TypeScript** and **[typescript-eslint](https://typescript-eslint.io)** in your project.
-
----
-
-# React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -75,3 +62,5 @@ Currently, two official plugins are available:
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+---
