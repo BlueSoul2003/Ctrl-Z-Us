@@ -1,3 +1,68 @@
+# 📚 Tutorly – Smart Tutoring for University Students
+
+**Track:** Student Lifestyle  
+
+**Problem Statement Tackled:**  
+> Traditional tutoring services are often expensive, inconvenient, or unavailable outside of fixed hours, leaving students without adequate support when they need it most. This gap hinders academic performance, increases stress, and discourages independent learning.
+
+---
+
+## 🔍 Background
+
+Many university students face academic challenges such as difficulty understanding course material, lack of personalized help, and poor study habits. Existing tutoring solutions are often limited by cost, rigid scheduling, and unavailability after class hours—precisely when help is needed most.
+
+---
+
+## 💡 Our Solution
+
+**Tutorly** is a web-based tutoring platform that offers:
+
+- 💬 **On-demand tutoring** from qualified peers or verified tutors  
+- 💰 **Affordable, flexible pricing** (e.g., pay-per-minute or group rates)  
+- 🤖 **24/7 AI-powered academic assistant** (Gemini API integration)  
+- 🧠 **Curated study tools** and learning resources to promote self-learning  
+- 🗓️ **Dynamic scheduling** and personalized session reminders  
+- 🔗 **Peer matching system** for shared learning and mentorship  
+
+---
+
+## 🎯 Key Goals
+
+- Make academic support accessible and affordable to all students  
+- Reduce stress caused by last-minute academic struggles  
+- Encourage independent learning through self-paced tools and smart nudges  
+- Create a peer-powered learning ecosystem within universities  
+
+---
+
+## 🚀 Tech Stack
+
+| Layer          | Tools Used                          |
+| -------------- | ----------------------------------- |
+| Frontend       | React + Vite + Tailwind CSS         |
+| Backend        | FastAPI                             |
+| AI Assistant   | Gemini API (Google) / LLM APIs      |
+| Database       | Firebase Firestore                  |
+| Authentication | Firebase Auth (Google Login)        |
+| Hosting        | Vercel (Frontend), Render (Backend) |
+| DevOps         | GitHub, Environment Variables       |
+
+---
+
+## 🧩 React + Vite
+
+This project uses **React** with **Vite** for a fast development experience featuring HMR and opinionated ESLint rules.
+
+**Official React plugins for Vite:**
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) — uses **Babel** for Fast Refresh  
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) — uses **SWC** for Fast Refresh
+
+### ESLint & TypeScript Recommendation
+
+If you are developing a production application, enable **type-aware lint rules** with TypeScript. See the Vite **[React + TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts)** for details on integrating **TypeScript** and **[typescript-eslint](https://typescript-eslint.io)** in your project.
+
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
